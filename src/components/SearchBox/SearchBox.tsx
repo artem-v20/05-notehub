@@ -1,10 +1,10 @@
 import css from './SearchBox.module.css';
 
-interface SearchBoxTasksProps {
+interface SearchBoxProps {
   onChange: (value: string) => void;
 }
 
-const SearchBox = ({ onChange }: SearchBoxTasksProps) => {
+const SearchBox = ({ onChange }: SearchBoxProps) => {
   return (
     <input
       onChange={e => {

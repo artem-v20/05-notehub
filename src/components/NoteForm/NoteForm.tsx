@@ -40,14 +40,17 @@ const NoteForm = ({ closeModal }: NoteFormProps) => {
     values: FormValues,
     actions: FormikHelpers<FormValues>
   ) => {
-    mutation.mutate(values);
-    actions.resetForm();
+    mutation.mutate(values, {
+      onSuccess: () => {
+        actions.resetForm();
+      },
+    });
   };
 
   return (
     <Formik
       validationSchema={ValidationSchema}
-      initialValues={{ title: '', content: '', tag: 'todo' }}
+      initialValues={{ title: '', content: '', tag: 'Todo' }}
       onSubmit={handleSubmit}
     >
       <Form className={css.form}>
@@ -77,7 +80,7 @@ const NoteForm = ({ closeModal }: NoteFormProps) => {
             <option value="Meeting">Meeting</option>
             <option value="Shopping">Shopping</option>
           </Field>
-          <ErrorMessage className={css.error} name="status" component="span" />
+          <ErrorMessage className={css.error} name="tag" component="span" />
         </label>
         <div className={css.actions}>
           <button

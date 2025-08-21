@@ -43,6 +43,7 @@ const App = () => {
 
   const handleSearch = useDebouncedCallback((value: string) => {
     setSearch(value);
+    setPage(1);
   }, 500);
 
   return (
